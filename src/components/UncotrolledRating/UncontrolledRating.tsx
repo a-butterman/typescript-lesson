@@ -5,13 +5,18 @@ export function UncontrolledRating() {
 
     let [value, setValue] = useState(0)
 
+    const buttonClass = {
+        border: '0 solid white',
+        backgroundColor: 'white'
+    }
+
     return (
         <div>
-            <Star selected={value >= 1}/> <button onClick={ () => setValue(value = 1 ? 1 : 0) }>1</button>
-            <Star selected={value >= 2}/> <button onClick={ () => setValue(value = 2 ? 2 : 0) }>2</button>
-            <Star selected={value >= 3}/> <button onClick={ () => setValue(value = 3 ? 3 : 0) }>3</button>
-            <Star selected={value >= 4}/> <button onClick={ () => setValue(value = 4 ? 4 : 0) }>4</button>
-            <Star selected={value >= 5}/> <button onClick={ () => setValue(value = 5 ? 5 : 0) }>5</button>
+             <button style={buttonClass} onClick={ () => setValue(value = 1 ? 1 : 0) }><Star selected={value >= 1}/></button>
+             <button style={buttonClass} onClick={ () => setValue(value = 2 ? 2 : 0) }><Star selected={value >= 2}/></button>
+             <button style={buttonClass} onClick={ () => setValue(value = 3 ? 3 : 0) }><Star selected={value >= 3}/></button>
+             <button style={buttonClass} onClick={ () => setValue(value = 4 ? 4 : 0) }><Star selected={value >= 4}/></button>
+             <button style={buttonClass} onClick={ () => setValue(value = 5 ? 5 : 0) }><Star selected={value >= 5}/></button>
         </div>
     )
 }
