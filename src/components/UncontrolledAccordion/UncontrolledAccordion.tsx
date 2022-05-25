@@ -4,46 +4,37 @@ type AccordionPropsType = {
     titleValue: string;
 }
 
-// component ===================================================================
 export function UncontrolledAccordion(props: AccordionPropsType) {
 
-    let [collapsed, setCollapsed] = useState (true)
+    let [collapsed, setCollapsed] = useState(false)
 
-    if (!collapsed) {
+// accordion title ===================================================================
+    type AccordionTitlePropsType = {
+        title: string;
+        onClick: () => void
+    }
+    const TitleStyle = {
+        cursor: 'pointer',
+    }
+    function AccordionTitle(props: AccordionTitlePropsType) {
+        return <h3 style={TitleStyle} onClick={ () => {props.onClick()}} > {props.title} </h3>
+    }
+
+    function AccordionBody() {
         return (
-            <div>
-                <AccordionTitle title={props.titleValue}/>
-                <button onClick={() => setCollapsed(collapsed ? false : true)}>toggle</button>
-                <AccordionBody />
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <AccordionTitle title={props.titleValue}/>
-                <button onClick={() => setCollapsed(collapsed ? false : true)}>toggle</button>
-            </div>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JS</li>
+                <li>REACT</li>
+            </ul>
         )
     }
-}
-
-
-// accordion ===================================================================
-type AccordionTitlePropsType = {
-    title: string;
-}
-
-function AccordionTitle(props: AccordionTitlePropsType) {
-    return <h3> { props.title } </h3>
-}
-
-function AccordionBody() {
+// component ===================================================================
     return (
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JS</li>
-            <li>REACT</li>
-        </ul>
+        <div>
+            <AccordionTitle title={props.titleValue} onClick={() => setCollapsed(!collapsed)}/>
+            {!collapsed && <AccordionBody/>}
+        </div>
     )
 }

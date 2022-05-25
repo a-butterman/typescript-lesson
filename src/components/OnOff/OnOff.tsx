@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 export const OnOff = () => {
 
     let [on, setOn] = useState(false)
+
     // CSS =======================================================================
     const OnOStyle = {
         width: '40px',
@@ -12,6 +13,7 @@ export const OnOff = () => {
         marginRight: '5px',
         padding: '0 5px 0 5px',
         backgroundColor: on ? 'green' : 'white',
+        cursor: 'pointer',
     }
     const OffStyle = {
         width: '40px',
@@ -21,6 +23,7 @@ export const OnOff = () => {
         marginRight: '5px',
         padding: '0 5px 0 5px',
         backgroundColor: on ? 'white' : 'red',
+        cursor: 'pointer',
     }
     const indicatorStyle = {
         width: '15px',
